@@ -24,26 +24,6 @@ var specialChars = "";
 console.log(acceptance.lettersLowercase);
 
 
-
-// function to collect accepted criteria for password
-function writePassword() {
-  // Write password to the #password input
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-var randPass = function() {
-  for (var i = 0; i < lengthPass.length; i++) {
-    randPass += passCriteria.passwordChar[Math.floor(Math.random() * passCriteria.passwordChar.length)];
-    console.log(randPass); 
-    return randPass();
-  }
-  
-}
-
 var generatePassword = function () {
   // conditions for accepted criteria of password length
   while (lengthPass === "" || lengthPass === null || lengthPass <= 7 || lengthPass >= 60) {
@@ -92,6 +72,7 @@ var generatePassword = function () {
     if (passCriteria.numChar === true) {
       // this will add numArr to passwordChar array
       passCriteria.passwordChar += numArr;
+      window.alert("Nice! Your password will have number characters.")
     } else {
       // alerts the user of no lower case character chosen
       window.alert("Fine! You can chose whatever characters you want.");
@@ -100,22 +81,26 @@ var generatePassword = function () {
     passCriteria.specialChars = window.confirm("Click OK if you want to add special character in your password. ");
     if(passCriteria.specialChars === true) {
       passCriteria.passwordChar += acceptance.specialCharacters;
+      window.alert("Nice! Your password will have special characters.")
     } else {
       // alerts the user of no lower case character chosen
       window.alert("Fine! You can chose whatever characters you want.");
     }
-    if (passCriteria !== true) {
-      window.alert("Please select a character to select from the list of characters");
-    } else {
+    // if (passCriteria !== true) {
+    //   window.alert("Please select a character to select from the list of characters");
+    // } else {
       break;
-    }
+    //}
     console.log(passCriteria.passwordChar);
     break;
   }
-  randPass();
+  var randPass = "";
+  for (var i = 0; i < lengthPass.length; i++) {
+    randPass += passCriteria.passwordChar[Math.floor(Math.random() * passCriteria.passwordChar.length)];
+    console.log(randPass); 
+  }
+  return randPass; 
 }
-
-
 
 var passCriteria = [
   {
@@ -126,6 +111,16 @@ var passCriteria = [
     specialChars
   }
 ];
+
+// function to collect accepted criteria for password
+function writePassword() {
+  // Write password to the #password input
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
