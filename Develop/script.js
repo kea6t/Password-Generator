@@ -83,9 +83,6 @@ var generatePassword = function () {
       // alerts the user of no lower case character chosen
       window.alert("Fine! You can chose whatever characters you want.");
     }
-    // if (passCriteria !== true) {
-    //   window.alert("Please select a character to select from the list of characters");
-    // } else {
       break;
   }
   var randPass = "";
