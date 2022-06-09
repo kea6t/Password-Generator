@@ -3,28 +3,27 @@ var generateBtn = document.querySelector("#generate");
 
 // object for acceptance criteria
 var acceptance = {
-  lettersUpperCase: " 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' ",
-  lettersLowercase: "a b c d e f g h i j k l m n o p q r s t u v w x y z",
-  specialCharacters: " '~', '`', '!', '@', '#', '$', '%', '-', '_', '&', '*', '=', '+', '?', '.', '/', ",
-  numerical: "1 2 3 4 5 6 7 8 9 0"
-
+    lettersUpperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    lettersLowercase: "abcdefghijklmnopqrstuvwxyz",
+    specialCharacters: "~`!@#$%-_&*=+?./",
+    numerical: "0123456789"
 };
 // makes the property of acceptance object arrays for lower case and numbers
-var alphabetLowerArr = acceptance.lettersLowercase.split('');
-var numArr = acceptance.numerical.split('');
+// var alphabetLowerArr = acceptance.lettersLowercase.split('');
+// var alphabetSpecChar = acceptance.specialCharacters.split('');
 
 // Variable declarations
 var lengthPass = "";
 
 
-console.log(acceptance.lettersLowercase);
+//console.log(acceptance.lettersLowercase);
 
 
 var generatePassword = function () {
   // conditions for accepted criteria of password length
-  while (lengthPass === "" || lengthPass === null || lengthPass <= 7 || lengthPass >= 60) {
+  while (lengthPass === "" || lengthPass === null || lengthPass <= 7 || lengthPass >= 128) {
     // ask the user for password length
-    lengthPass = window.prompt("How many characters would you like for your password? 'Must be 8 characters minimum and maximum of 60 characters.'");
+    lengthPass = window.prompt("How many characters would you like for your password? 'Must be 8 characters minimum and maximum of 128 characters.'");
     if (lengthPass <= 7 || lengthPass >= 60) {
       window.alert("You need to provide a valid answer! Please try again.");
     }
@@ -56,7 +55,7 @@ var generatePassword = function () {
     // if they click OK
     if (passCriteria.lowerCaseLetter === true) {
       // this will add lower case array to passwordChar array
-      passCriteria.passwordChar += alphabetLowerArr;
+      passCriteria.passwordChar += acceptance.lettersLowerCase;
       window.alert("Nice! Your password will have lowercase characters.");
     } else {
       // alerts the user of no lower case character chosen
@@ -67,7 +66,7 @@ var generatePassword = function () {
     // if they click OK 
     if (passCriteria.numChar === true) {
       // this will add numArr to passwordChar array
-      passCriteria.passwordChar += numArr;
+      passCriteria.passwordChar += acceptance.numerical;
       window.alert("Nice! Your password will have number characters.");
     } else {
       // alerts the user of no lower case character chosen
