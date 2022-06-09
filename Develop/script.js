@@ -15,7 +15,6 @@ var numArr = acceptance.numerical.split('');
 
 // Variable declarations
 var lengthPass = "";
-var passwordChar = "";
 
 
 console.log(acceptance.lettersLowercase);
@@ -30,7 +29,7 @@ var generatePassword = function () {
       window.alert("You need to provide a valid answer! Please try again.");
     }
     if (isNaN(lengthPass)) {
-      window.alert("Please enter a valid number! Try again.")
+      window.alert("Please enter a valid number! Try again.");
     }
   }// end of while loop
 
@@ -45,7 +44,7 @@ var generatePassword = function () {
     // if they click ok
     if (passCriteria.upperCaseLetter === true) {
       // this will add upper case array to passwordChar array 
-      passwordChar += acceptance.lettersUpperCase;
+      passCriteria.passwordChar += acceptance.lettersUpperCase;
       window.alert("Nice! Your password will have uppercase characters.");
     } else {
       // alerts the user of no upper case character chosen
@@ -57,7 +56,7 @@ var generatePassword = function () {
     // if they click OK
     if (passCriteria.lowerCaseLetter === true) {
       // this will add lower case array to passwordChar array
-      passwordChar += alphabetLowerArr;
+      passCriteria.passwordChar += alphabetLowerArr;
       window.alert("Nice! Your password will have lowercase characters.");
     } else {
       // alerts the user of no lower case character chosen
@@ -68,7 +67,7 @@ var generatePassword = function () {
     // if they click OK 
     if (passCriteria.numChar === true) {
       // this will add numArr to passwordChar array
-      passwordChar += numArr;
+      passCriteria.passwordChar += numArr;
       window.alert("Nice! Your password will have number characters.");
     } else {
       // alerts the user of no lower case character chosen
@@ -79,7 +78,7 @@ var generatePassword = function () {
     // if they click OK 
     if(passCriteria.specialChars === true) {
       // this will add numArr to passwordChar array
-      passwordChar += acceptance.specialCharacters;
+      passCriteria.passwordChar += acceptance.specialCharacters;
       window.alert("Nice! Your password will have special characters.");
     } else {
       // alerts the user of no lower case character chosen
@@ -90,18 +89,18 @@ var generatePassword = function () {
     // } else {
       break;
   }
-  var result = "";
+  var randPass = "";
   for (var i = 0; i < lengthPass; i++) {
-    var randPass= passwordChar[Math.floor(Math.random() * passwordChar.length)];
-    result += passwordChar.charAt(randPass);
-    console.log(result);
-    console.log(result.length);
+    randPass += passCriteria.passwordChar[Math.floor(Math.random() * passCriteria.passwordChar.length)];
+    console.log(randPass);
+    console.log(randPass.length);
   }
-  return result; 
+  return randPass; 
 }
 
 var passCriteria = [
   {
+    passwordChar: "",
     upperCaseLetter: "",
     lowerCaseLetter: "",
     numChar: "",
