@@ -24,7 +24,7 @@ var generatePassword = function () {
   while (lengthPass === "" || lengthPass === null || lengthPass <= 7 || lengthPass >= 128) {
     // ask the user for password length
     lengthPass = window.prompt("How many characters would you like for your password? 'Must be 8 characters minimum and maximum of 128 characters.'");
-    if (lengthPass <= 7 || lengthPass >= 60) {
+    if (lengthPass <= 7 || lengthPass >= 128) {
       window.alert("You need to provide a valid answer! Please try again.");
     }
     if (isNaN(lengthPass)) {
